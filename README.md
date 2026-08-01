@@ -36,7 +36,7 @@ Proyecto de gestión empresarial para pymes desarrollado en Java con Spring Boot
 5. Abrir en el navegador:
 
 ```text
-http://localhost:8080
+http://localhost:8081
 ```text
 
 ## Autor
