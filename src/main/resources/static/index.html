@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSolutions | Gestión Empresarial</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        header {
+            background: #123c69;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #58c4dd;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 18px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 45px 25px;
+        }
+
+        .bienvenida {
+            background: linear-gradient(135deg, #123c69, #1d6fa5);
+            color: white;
+            padding: 35px;
+            border-radius: 14px;
+            margin-bottom: 30px;
+        }
+
+        .bienvenida h1 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .bienvenida p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        h2 {
+            margin-bottom: 18px;
+            color: #123c69;
+        }
+
+        .modulos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .tarjeta {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #1d6fa5;
+        }
+
+        .tarjeta h3 {
+            margin-bottom: 10px;
+            color: #123c69;
+        }
+
+        .tarjeta p {
+            color: #5b6472;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .patron {
+            display: inline-block;
+            background: #e5f4f8;
+            color: #123c69;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .boton {
+            display: block;
+            width: 100%;
+            border: none;
+            background: #123c69;
+            color: white;
+            padding: 10px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .boton:hover {
+            background: #1d6fa5;
+        }
+
+        .demostracion {
+            display: none;
+            background: white;
+            margin-top: 35px;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .demostracion p {
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .demostracion input,
+        .demostracion select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+        }
+
+        .resultado {
+            margin-top: 16px;
+            padding: 14px;
+            border-radius: 7px;
+            background: #e5f4f8;
+            color: #123c69;
+            font-weight: bold;
+        }
+
+        .alerta {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .boton-secundario {
+            display: inline-block;
+            border: none;
+            background: #1d6fa5;
+            color: white;
+            padding: 10px 14px;
+            margin: 5px 5px 5px 0;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            background: #123c69;
+            color: white;
+            margin-top: 35px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Tech<span>Solutions</span></div>
+
+        <nav>
+            <a onclick="irInicio()">Inicio</a>
+            <a onclick="abrirModulo('catalogo')">Catálogo</a>
+            <a onclick="abrirModulo('inventario')">Inventario</a>
+            <a onclick="abrirModulo('pedidos')">Pedidos</a>
+            <a onclick="abrirModulo('reportes')">Reportes</a>
+        </nav>
+    </header>
+
+    <main id="inicio">
+        <section class="bienvenida">
+            <h1>Plataforma de Gestión Empresarial</h1>
+            <p>
+                Sistema web para gestionar productos, inventario, pedidos,
+                pagos y reportes financieros de pequeñas y medianas empresas.
+            </p>
+        </section>
+
+        <h2>Módulos del sistema</h2>
+
+        <section class="modulos">
+            <article class="tarjeta">
+                <h3>Catálogo de productos</h3>
+                <p>Busca y recorre productos de manera ordenada y eficiente.</p>
+                <span class="patron">Iterator</span>
+                <button class="boton" onclick="abrirModulo('catalogo')">
+                    Ver catálogo
+                </button>
+            </article>
+
+            <article class="tarjeta">
+                <h3>Inventario</h3>
+                <p>Controla el stock y genera alertas por cantidad mínima.</p>
+                <span class="patron">Observer</span>
+                <button class="boton" onclick="abrirModulo('inventario')">
+                    Ver inventario
+                </button>
+            </article>
+
+            <article class="tarjeta">
+                <h3>Pedidos</h3>
+                <p>Registra acciones de pedido y permite deshacer cambios.</p>
+                <span class="patron">Command y Memento</span>
+                <button class="boton" onclick="abrirModulo('pedidos')">
+                    Gestionar pedido
+                </button>
+            </article>
+
+            <article class="tarjeta">
+                <h3>Pagos</h3>
+                <p>Integra PayPal, Yape y Plin con una interfaz común.</p>
+                <span class="patron">Adapter</span>
+                <button class="boton" onclick="abrirModulo('pagos')">
+                    Procesar pago
+                </button>
+            </article>
+
+            <article class="tarjeta">
+                <h3>Reportes financieros</h3>
+                <p>Valida el rol del usuario antes de mostrar información sensible.</p>
+                <span class="patron">Proxy</span>
+                <button class="boton" onclick="abrirModulo('reportes')">
+                    Ver reporte
+                </button>
+            </article>
+
+            <article class="tarjeta">
+                <h3>Configuración de precios</h3>
+                <p>Aplica precio estándar, descuento o precio dinámico.</p>
+                <span class="patron">Strategy</span>
+                <button class="boton" onclick="abrirModulo('precios')">
+                    Calcular precio
+                </button>
+            </article>
+        </section>
+
+        <section id="demostracion" class="demostracion"></section>
+    </main>
+
+    <footer>
+        TechSolutions S.A. — Plataforma de Gestión Empresarial
+    </footer>
+
+    <script>
+        let estadoPedido = "CREADO";
+        let estadoAnterior = "CREADO";
+
+        function irInicio() {
+            document.getElementById("demostracion").style.display = "none";
+            document.getElementById("inicio").scrollIntoView({ behavior: "smooth" });
+        }
+
+        function abrirModulo(modulo) {
+            const panel = document.getElementById("demostracion");
+            panel.style.display = "block";
+
+            if (modulo === "catalogo") {
+                panel.innerHTML = `
+                    <h2>Catálogo de productos</h2>
+                    <p>Demostración del patrón Iterator: se recorre una colección de productos sin exponer su estructura interna.</p>
+
+                    <input id="busqueda" type="text" placeholder="Buscar producto...">
+                    <button class="boton-secundario" onclick="buscarProducto()">Buscar</button>
+
+                    <div id="listaProductos" class="resultado">
+                        1. Teclado Mecánico RGB — S/ 189.00<br>
+                        2. Mouse Gamer Pro — S/ 95.00<br>
+                        3. Headset HyperSound — S/ 149.00<br>
+                        4. Webcam HD 1080p — S/ 120.00
+                    </div>
+                `;
+            }
+
+            if (modulo === "inventario") {
+                panel.innerHTML = `
+                    <h2>Inventario y alerta de stock</h2>
+                    <p>Demostración del patrón Observer. Cuando el stock queda debajo del mínimo, se notifica a Gerencia y Compras.</p>
+
+                    <div class="resultado">
+                        Producto: Mouse Gamer Pro<br>
+                        Stock actual: <strong id="stock">8</strong> unidades<br>
+                        Stock mínimo configurado: 5 unidades
+                    </div>
+
+                    <button class="boton-secundario" onclick="reducirStock()">
+                        Simular venta de 4 unidades
+                    </button>
+
+                    <div id="mensajeStock"></div>
+                `;
+            }
+
+            if (modulo === "pedidos") {
+                panel.innerHTML = `
+                    <h2>Gestión de pedidos</h2>
+                    <p>Demostración de Command y Memento. Cada acción cambia el estado y se puede restaurar el estado anterior.</p>
+
+                    <div id="estadoPedido" class="resultado">
+                        Pedido P-001 — Estado: ${estadoPedido}
+                    </div>
+
+                    <button class="boton-secundario" onclick="cambiarPedido('PROCESADO')">
+                        Procesar pedido
+                    </button>
+
+                    <button class="boton-secundario" onclick="cambiarPedido('CANCELADO')">
+                        Cancelar pedido
+                    </button>
+
+                    <button class="boton-secundario" onclick="deshacerPedido()">
+                        Deshacer último cambio
+                    </button>
+                `;
+            }
+
+            if (modulo === "pagos") {
+                panel.innerHTML = `
+                    <h2>Procesamiento de pagos</h2>
+                    <p>Demostración del patrón Adapter: las pasarelas diferentes usan una misma operación de pago.</p>
+
+                    <label>Selecciona una pasarela:</label>
+                    <select id="pasarela">
+                        <option value="PayPal">PayPal</option>
+                        <option value="Yape">Yape</option>
+                        <option value="Plin">Plin</option>
+                    </select>
+
+                    <button class="boton-secundario" onclick="procesarPago()">
+                        Pagar S/ 250.00
+                    </button>
+
+                    <div id="mensajePago"></div>
+                `;
+            }
+
+            if (modulo === "reportes") {
+                panel.innerHTML = `
+                    <h2>Reportes financieros</h2>
+                    <p>Demostración del patrón Proxy: antes de acceder, se valida el rol del usuario.</p>
+
+                    <label>Selecciona el rol:</label>
+                    <select id="rol">
+                        <option value="Vendedor">Vendedor</option>
+                        <option value="Gerente">Gerente</option>
+                        <option value="Contador">Contador</option>
+                    </select>
+
+                    <button class="boton-secundario" onclick="verReporte()">
+                        Solicitar reporte
+                    </button>
+
+                    <div id="mensajeReporte"></div>
+                `;
+            }
+
+            if (modulo === "precios") {
+                panel.innerHTML = `
+                    <h2>Configuración de precios</h2>
+                    <p>Demostración del patrón Strategy: el administrador puede cambiar la política de precio.</p>
+
+                    <label>Estrategia de precio:</label>
+                    <select id="estrategia">
+                        <option value="estandar">Precio estándar</option>
+                        <option value="descuento">Descuento del 10%</option>
+                        <option value="dinamico">Precio dinámico (+15%)</option>
+                    </select>
+
+                    <button class="boton-secundario" onclick="calcularPrecio()">
+                        Calcular precio
+                    </button>
+
+                    <div id="mensajePrecio"></div>
+                `;
+            }
+
+            panel.scrollIntoView({ behavior: "smooth" });
+        }
+
+        function buscarProducto() {
+            const texto = document.getElementById("busqueda").value.toLowerCase();
+            const lista = document.getElementById("listaProductos");
+
+            if (texto.includes("mouse")) {
+                lista.innerHTML = "Producto encontrado:<br><strong>Mouse Gamer Pro — S/ 95.00</strong>";
+            } else if (texto.includes("teclado")) {
+                lista.innerHTML = "Producto encontrado:<br><strong>Teclado Mecánico RGB — S/ 189.00</strong>";
+            } else {
+                lista.innerHTML = "Mostrando productos disponibles:<br>Teclado, Mouse, Headset y Webcam.";
+            }
+        }
+
+        function reducirStock() {
+            document.getElementById("stock").textContent = "4";
+
+            document.getElementById("mensajeStock").innerHTML = `
+                <div class="resultado alerta">
+                    Alerta Observer: el stock está debajo del mínimo.<br>
+                    Notificación enviada a Gerente y Compras.
+                </div>
+            `;
+        }
+
+        function cambiarPedido(nuevoEstado) {
+            estadoAnterior = estadoPedido;
+            estadoPedido = nuevoEstado;
+
+            document.getElementById("estadoPedido").innerHTML =
+                "Pedido P-001 — Estado: <strong>" + estadoPedido + "</strong><br>" +
+                "Comando registrado en el historial.";
+        }
+
+        function deshacerPedido() {
+            estadoPedido = estadoAnterior;
+
+            document.getElementById("estadoPedido").innerHTML =
+                "Pedido P-001 — Estado restaurado: <strong>" + estadoPedido + "</strong><br>" +
+                "Memento restaurado correctamente.";
+        }
+
+        function procesarPago() {
+            const pasarela = document.getElementById("pasarela").value;
+
+            document.getElementById("mensajePago").innerHTML = `
+                <div class="resultado">
+                    Pago procesado correctamente mediante <strong>${pasarela}</strong>.<br>
+                    Adapter utilizó una interfaz común para la pasarela seleccionada.
+                </div>
+            `;
+        }
+
+        function verReporte() {
+            const rol = document.getElementById("rol").value;
+            const mensaje = document.getElementById("mensajeReporte");
+
+            if (rol === "Gerente" || rol === "Contador") {
+                mensaje.innerHTML = `
+                    <div class="resultado">
+                        Acceso autorizado por Proxy.<br>
+                        Ventas del mes: S/ 18,500.00<br>
+                        Gastos operativos: S/ 6,400.00
+                    </div>
+                `;
+            } else {
+                mensaje.innerHTML = `
+                    <div class="resultado alerta">
+                        Acceso denegado por Proxy.<br>
+                        El rol Vendedor no puede ver reportes financieros completos.
+                    </div>
+                `;
+            }
+        }
+
+        function calcularPrecio() {
+            const estrategia = document.getElementById("estrategia").value;
+            let precio = 100;
+            let nombre = "Precio estándar";
+
+            if (estrategia === "descuento") {
+                precio = 90;
+                nombre = "Descuento del 10%";
+            }
+
+            if (estrategia === "dinamico") {
+                precio = 115;
+                nombre = "Precio dinámico (+15%)";
+            }
+
+            document.getElementById("mensajePrecio").innerHTML = `
+                <div class="resultado">
+                    Estrategia aplicada: <strong>${nombre}</strong><br>
+                    Precio final del producto: <strong>S/ ${precio.toFixed(2)}</strong>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
+
+
